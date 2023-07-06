@@ -1,7 +1,7 @@
 # Analise de Dados do Metro do Porto (GeoJSON)
 Este é um projeto da cadeira de Programação 2 proposto pela Faculdade de Ciências da Universidade do Porto, cujo objetivo é a análise de dados do metro do porto e criar um ficheiro no formato GeoJSON.
 
-Foi considerado um dataset com informação sobre a rede de Metro do Porto, disponibilizada abertamente [neste link](https://opendata.porto.digital/ne/dataset/horarios-paragens-e-rotas-em-formato-gtfs), e com uma cópia dos ficheiros mais relevantes na pasta [metro](metro).
+Para este projeto, foi considerado um dataset com informação sobre a rede de Metro do Porto, disponibilizada abertamente [neste link](https://opendata.porto.digital/ne/dataset/horarios-paragens-e-rotas-em-formato-gtfs), e com uma cópia dos ficheiros mais relevantes na pasta [metro](metro).
 
 ## Objetivo
 
