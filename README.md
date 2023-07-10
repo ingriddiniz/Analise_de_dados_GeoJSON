@@ -1,11 +1,16 @@
-# Analise de Dados do Metro do Porto (GeoJSON)
-Este é um projeto da cadeira de Programação 2 proposto pela Faculdade de Ciências da Universidade do Porto, cujo objetivo é a análise de dados do metro do porto e criar um ficheiro no formato GeoJSON.
+# Porto Metro Data Analysis
+![linhas_metro](metro_do_porto2.png)
 
-Para este projeto, foi considerado um dataset com informação sobre a rede de Metro do Porto, disponibilizada abertamente [neste link](https://opendata.porto.digital/ne/dataset/horarios-paragens-e-rotas-em-formato-gtfs), e com uma cópia dos ficheiros mais relevantes na pasta [metro](metro).
+This is a project for the Programming 2 course proposed by the Faculty of Sciences of the University of Porto, aimed at analyzing data from the Porto Metro.
+<br> 
+The project is divided into two tasks. The first task aims to create a GeoJSON file, while the second task involves answering questions related to the metro stations and lines using the `NetworkX` library.
 
-## Objetivo
+## Dataset
+For this project, a dataset containing information about the Porto Metro network was considered. The dataset is openly available [neste link](https://opendata.porto.digital/ne/dataset/horarios-paragens-e-rotas-em-formato-gtfs), e com uma cópia dos ficheiros mais relevantes na pasta [metro](metro).
 
-A tarefa proposta consiste em gerar um arquivo GeoJSON que represente geograficamente as linhas e estações do Metro do Porto, facilitando a visualização dos dados. O  [GeoJSON](https://geojson.org/) é um formato válido de JSON que segue uma estrutura específica para representar marcadores geográficos e seus metadados associados. Um exemplo básico de um ponto em GeoJSON é:
+## Task 1
+
+The proposed task consists of generating a GeoJSON file that geographically represents the lines and stations of the Porto Metro, facilitating data visualization. GeoJSON is a valid JSON format that follows a specific structure to represent geographic features and their associated metadata. A basic example of a point in GeoJSON is:
 ```python
 {
     "type": "FeatureCollection", 
@@ -25,13 +30,39 @@ A tarefa proposta consiste em gerar um arquivo GeoJSON que represente geografica
 }
 ```
   
-## Passos do Projeto
+### Steps for Task 1
   
-1. Ler cada arquivo do conjunto de dados para um DataFrame separado e combinar os dados em um único DataFrame.
-2. Representar cada estação como um ponto no mapa, com propriedades adicionais, como o nome da estação.
-3. Representar cada linha de metrô como um conjunto de segmentos de reta no mapa, considerando que o caminho entre duas estações é uma reta. A cor do segmento foi ajustada para ser consistente com a cor do nome da linha de metrô correspondente.
-4. Após a representação das estações e linhas, os dados foram convertidos em formato GeoJSON e um arquivo chamado metro.geojson foi gerado. Esse arquivo contém todas as informações necessárias para visualizar o Metro do Porto em um mapa interativo.
+1. Read each file from the dataset into a separate DataFrame and combine the data into a single DataFrame.
+2. Represent each station as a point on the map, with additional properties such as the station name.
+3. Represent each metro line as a set of line segments on the map, considering that the path between two stations is a straight line. The color of the segment is adjusted to be consistent with the color of the corresponding metro line name.
+4. After representing the stations and lines, the data is converted to GeoJSON format, and a file named metro.geojson is generated. This file contains all the necessary information to visualize the Porto Metro on an interactive map.
   
-## Utilização e Visualização
+### Usage and Visualization
   
-O arquivo metro.geojson pode ser facilmente visualizado em plataformas de visualização de mapas, como o <https://geojson.io/>. Basta importar o arquivo para a plataforma e explorar as estações e linhas do Metro do Porto de forma interativa.
+The metro.geojson file can be easily visualized on map visualization platforms such as <https://geojson.io/>. Simply import the file into the platform and explore the stations and lines of the Porto Metro interactively.
+
+## Task 2
+
+The second task involves using the NetworkX library to analyze the data of the Porto Metro and answer questions related to the stations and metro lines.
+
+### Questions
+<br>
+1. Which station is crossed by the most metro lines?
+2. Is there a direct path between two chosen stations without changing lines? (the function should return a boolean)
+3. Estimate the fastest path between two stations in seconds.
+
+### Grafo auxiliar
+![Matro Graph](download.png)
+<br>
+For Task 2, an auxiliary graph was implemented to solve the questions.
+
+### Implemented Functions
+The following functions have been implemented to analyze the data and answer the proposed questions:
+<br>
+1. `hubPorto()`: This function returns the station crossed by the most metro lines. It analyzes the metro graph and identifies the station with the highest number of connections to other stations. The result is a tuple containing the station name and a set of line names that pass through it.
+2. `temCaminhoDireto(origem, destino)`: This function receives the names of two stations and checks if there is a direct path between them, i.e., if it is possible to go from one station to another without changing lines. The function uses the metro graph and checks if there is a direct edge between the two stations.
+3. `caminhoMaisRapido(origem, destino)`: This function estimates the fastest path in seconds between two stations. It assumes that changing lines takes 5 minutes and that the metro travels in a straight line between stations at a constant speed of 30 km/h. The function uses the geodist function to calculate the distance in kilometers between the geolocations of the stations and then estimates the time in seconds based on the travel speed.
+
+## Conclusion
+
+This project provided insights into the Porto Metro network and demonstrated the application of data analysis techniques and graph algorithms. The generated GeoJSON file and implemented functions can be further utilized for various purposes, such as visualizations, route planning, and network analysis.
