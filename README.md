@@ -1,5 +1,5 @@
 # Porto Metro Data Analysis
-![linhas_metro](metro_do_porto2.png)
+![linhas_metro](metro_do_porto.png)
 
 This is a project for the Programming 2 course proposed by the Faculty of Sciences of the University of Porto, aimed at analyzing data from the Porto Metro.
 <br> 
