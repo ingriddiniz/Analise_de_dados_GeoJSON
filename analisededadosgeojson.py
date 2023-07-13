@@ -26,10 +26,10 @@ merged_data = pd.merge(merged_data, stops_df, left_on=['shape_pt_lat', 'shape_pt
 
 merged_data
 
-def desenhaMetro():
+def drawMetro():
     features = []
-    for _, group in merged_data.groupby('route_short_name'): #merged_data agrupadas por linha de metrô
-        group = group.sort_values('shape_pt_sequence')# Ordenar as estações pelo sequenciamento
+    for _, group in merged_data.groupby('route_short_name'): 
+        group = group.sort_values('shape_pt_sequence')
 
         coordinates = []
 
@@ -37,21 +37,21 @@ def desenhaMetro():
             lon = row['stop_lon']
             lat = row['stop_lat']
 
-            point = geojson.Point((lon, lat)) # Criar um objeto Point para a estação
+            point = geojson.Point((lon, lat))
 
-            # Metainformação: nome da estação
+            # Metainformation: station name
             properties = {
                 'stop_name': row['stop_name']
             }
 
-            # Criar uma feature com o objeto Point e as propriedades
+            # Create a feature with the Point object and properties.
             feature = geojson.Feature(geometry=point, properties=properties)
             features.append(feature)
             coordinates.append((lon, lat))
 
         color ='#'+group['route_color'].values[0]
 
-        linestring = geojson.LineString(coordinates) # Criar um objeto LineString para cada linha
+        linestring = geojson.LineString(coordinates) 
 
         #  Metadata: line name and color
         properties = {
@@ -70,7 +70,7 @@ def desenhaMetro():
     with open('metro.geojson', 'w') as f:
         geojson.dump(feature_collection, f)
 
-desenhaMetro()
+drawMetro()
 
 #Task 2
 
@@ -86,9 +86,9 @@ def create_subway_graph(data):
 
     # Add edges between stations and lines
     for _, row in data.iterrows():
-        estacao = row['stop_name']
-        linha = row['route_short_name']
-        G.add_edge(estacao, linha)
+        station = row['stop_name']
+        line = row['route_short_name']
+        G.add_edge(station, line)
     return G
 G=create_subway_graph(merged_data)
 plt.figure(figsize=(12, 8))
@@ -98,18 +98,18 @@ plt.show()
 
 def hubPorto(data):
     # Add edges between stations and lines
-    estacoes = data.groupby('stop_name')['route_short_name'].nunique()
+    stations = data.groupby('stop_name')['route_short_name'].nunique()
 
     # Find the station with the most lines
-    estacao_mais_linhas = estacoes.idxmax()
+    station_plus_lines = stations.idxmax()
 
     # Get the lines associated with the station with the most lines
-    linhas = set(data[data['stop_name'] == estacao_mais_linhas]['route_short_name'])
+    lines = set(data[data['stop_name'] == station_plus_lines]['route_short_name'])
 
-    return estacao_mais_linhas, linhas
+    return station_plus_lines, lines
 hubPorto(merged_data)
 
-def temCaminhoDireto(station1, station2, graph):
+def directPathExists(origin, destination, graph):
     lines_station1 = set(graph.neighbors(station1))
     lines_station2 = set(graph.neighbors(station2))
     common_lines = lines_station1.intersection(lines_station2)
@@ -118,7 +118,7 @@ def temCaminhoDireto(station1, station2, graph):
 # Tests
 station1 = 'Camara de Matosinhos'
 station2 = 'I.P.O.'
-temCaminhoDireto(station1, station2, create_subway_graph(merged_data))
+directPathExists(station1, station2, create_subway_graph(merged_data))
 
 import networkx as nx
 import pandas as pd
@@ -130,7 +130,7 @@ def calculate_travel_time(distance):
     time = distance * time_per_km + 5  # add 5 minutes for line transfer
     return time * 60  # convert minutes to seconds
 
-def caminhoMaisRapido(station1, station2, graph, data):
+def fastestWay(station1, station2, graph, data):
     location_data = data[['stop_name', 'stop_lat', 'stop_lon']].drop_duplicates(subset='stop_name')
     station1_data = location_data[location_data['stop_name'] == station1].iloc[0]
     station2_data = location_data[location_data['stop_name'] == station2].iloc[0]
@@ -143,4 +143,4 @@ def caminhoMaisRapido(station1, station2, graph, data):
 
 station1 = 'Casa da Musica'
 station2 = 'Hospital de Sao Joao'
-caminhoMaisRapido(station1, station2, create_subway_graph(merged_data), merged_data)
+fastestWay(station1, station2, create_subway_graph(merged_data), merged_data)
