@@ -60,8 +60,8 @@ For Task 2, an auxiliary graph was implemented to solve the questions.
 The following functions have been implemented to analyze the data and answer the proposed questions:
 <br>
 1. `hubPorto()`: This function returns the station crossed by the most underground lines. It analyzes the underground graph and identifies the station with the highest number of connections to other stations. The result is a tuple containing the station name and a set of line names that pass through it.
-2. `temCaminhoDireto(origem, destino)`: This function receives the names of two stations and checks if there is a direct path between them, i.e., if it is possible to go from one station to another without changing lines. The function uses the underground graph and checks if there is a direct edge between the two stations.
-3. `caminhoMaisRapido(origem, destino)`: This function estimates the fastest path in seconds between two stations. It assumes that changing lines takes 5 minutes and that the underground travels in a straight line between stations at a constant speed of 30 km/h. The function uses the geodist function to calculate the distance in kilometers between the geolocations of the stations and then estimates the time in seconds based on the travel speed.
+2. `directWayExists(origin, destination)`: This function receives the names of two stations and checks if there is a direct path between them, i.e., if it is possible to go from one station to another without changing lines. The function uses the underground graph and checks if there is a direct edge between the two stations.
+3. `fastestWay(origin, destination)`: This function estimates the fastest path in seconds between two stations. It assumes that changing lines takes 5 minutes and that the underground travels in a straight line between stations at a constant speed of 30 km/h. The function uses the geodist function to calculate the distance in kilometers between the geolocations of the stations and then estimates the time in seconds based on the travel speed.
 
 ## Conclusion
 
