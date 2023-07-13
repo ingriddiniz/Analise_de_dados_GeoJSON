@@ -51,7 +51,7 @@ The second task involves using the NetworkX library to analyze the data of the P
 2. Is there a direct path between two chosen stations without changing lines? (the function should return a boolean)
 3. Estimate the fastest path between two stations in seconds.
 
-### Grafo auxiliar
+### Auxiliar Graph
 ![Matro Graph](download.png)
 <br>
 For Task 2, an auxiliary graph was implemented to solve the questions.
