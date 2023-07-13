@@ -1,16 +1,16 @@
-# Porto Metro Data Analysis
+# Porto Underground Data Analysis
 ![linhas_metro](metro_do_porto.png)
 
-This is a project for the Programming 2 course proposed by the Faculty of Sciences of the University of Porto, aimed at analyzing data from the Porto Metro.
+This is a project for the Programming 2 course proposed by the Faculdade de Ciências da Universidade do Porto, aimed at analyzing data from the Porto Underground.
 <br> 
 The project is divided into two tasks. The first task aims to create a GeoJSON file, while the second task involves answering questions related to the metro stations and lines using the `NetworkX` library.
 
 ## Dataset
-For this project, a dataset containing information about the Porto Metro network was considered. The dataset is openly available [neste link](https://opendata.porto.digital/ne/dataset/horarios-paragens-e-rotas-em-formato-gtfs), e com uma cópia dos ficheiros mais relevantes na pasta [metro](metro).
+For this project, a dataset containing information about the Porto Underground network was considered. The dataset is openly available [neste link](https://opendata.porto.digital/ne/dataset/horarios-paragens-e-rotas-em-formato-gtfs), e com uma cópia dos ficheiros mais relevantes na pasta [metro](metro).
 
 ## Task 1
 
-The proposed task consists of generating a GeoJSON file that geographically represents the lines and stations of the Porto Metro, facilitating data visualization. GeoJSON is a valid JSON format that follows a specific structure to represent geographic features and their associated metadata. A basic example of a point in GeoJSON is:
+The proposed task consists of generating a GeoJSON file that geographically represents the lines and stations of the Porto Underground, facilitating data visualization. GeoJSON is a valid JSON format that follows a specific structure to represent geographic features and their associated metadata. A basic example of a point in GeoJSON is:
 ```python
 {
     "type": "FeatureCollection", 
