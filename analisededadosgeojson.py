@@ -109,7 +109,7 @@ def hubPorto(data):
     return station_plus_lines, lines
 hubPorto(merged_data)
 
-def directPathExists(origin, destination, graph):
+def directWayExists(origin, destination, graph):
     lines_station1 = set(graph.neighbors(station1))
     lines_station2 = set(graph.neighbors(station2))
     common_lines = lines_station1.intersection(lines_station2)
@@ -118,7 +118,7 @@ def directPathExists(origin, destination, graph):
 # Tests
 station1 = 'Camara de Matosinhos'
 station2 = 'I.P.O.'
-directPathExists(station1, station2, create_subway_graph(merged_data))
+directWayExists(station1, station2, create_subway_graph(merged_data))
 
 import networkx as nx
 import pandas as pd
