@@ -6,7 +6,7 @@ This is a project for the Programming 2 course proposed by the Faculdade de Ciê
 The project is divided into two tasks. The first task aims to create a GeoJSON file, while the second task involves answering questions related to the underground stations and lines using the `NetworkX` library.
 
 ## Dataset
-For this project, a dataset containing information about the Porto Underground network was considered. The dataset is openly available [neste link](https://opendata.porto.digital/ne/dataset/horarios-paragens-e-rotas-em-formato-gtfs), e com uma cópia dos ficheiros mais relevantes na pasta [underground](metro).
+For this project, a dataset containing information about the Porto Underground network was considered. The dataset is openly available in [this link](https://opendata.porto.digital/ne/dataset/horarios-paragens-e-rotas-em-formato-gtfs), and with a copy of the most relevant files in the folder [underground](metro).
 
 ## Task 1
 
