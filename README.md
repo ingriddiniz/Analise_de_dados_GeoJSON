@@ -65,4 +65,4 @@ The following functions have been implemented to analyze the data and answer the
 
 ## Conclusion
 
-This project provided insights into the Porto Underground network and demonstrated the application of data analysis techniques and graph algorithms. The generated GeoJSON file and implemented functions can be further utilized for various purposes, such as visualizations, route planning, and network analysis.
+This project provided insights into the Porto Underground network and demonstrated the application of data analysis techniques and graph algorithms. The generated GeoJSON file and implemented functions can be further used for various purposes, such as visualizations, route planning, and network analysis.
